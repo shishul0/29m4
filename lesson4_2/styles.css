@@ -1,0 +1,28 @@
+h2 {
+    background: blue;
+}
+.paragraf-1 {
+    background: rgb(37, 133, 32);
+}
+.paragraf-2 {
+    border: rgb(112, 78, 167) solid 6px;
+}
+.paragraf-3 {
+    border: rgb(252, 158, 219) dotted 6px;
+    margin-top: 60px;
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 60px;
+}
+.paragraf-4 {
+    border: rgb(100, 29, 29) solid 6px;
+    margin: 60px;
+    padding: 40px;
+}
+.paragraf-5 {
+    color: rgb(0, 234, 255);
+    font-family: Courier;
+}
+.info {
+    font-weight: bold;
+}
