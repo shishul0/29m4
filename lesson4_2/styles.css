@@ -1,8 +1,8 @@
 h2 {
-    background: blue;
+    background: rgba(0, 0, 255, 0.374);
 }
 .paragraf-1 {
-    background: rgb(37, 133, 32);
+    background: rgba(37, 133, 32, 0.444);
 }
 .paragraf-2 {
     border: rgb(112, 78, 167) solid 6px;
@@ -20,7 +20,7 @@ h2 {
     padding: 40px;
 }
 .paragraf-5 {
-    color: rgb(0, 234, 255);
+    color: rgb(255, 255, 0);
     font-family: Courier;
 }
 .info {
