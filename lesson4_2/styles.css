@@ -26,3 +26,9 @@ h2 {
 .info {
     font-weight: bold;
 }
+.paragraf-6 {
+    font-size: 24px;
+    transform: rotate(10deg);
+    text-align: center;
+    text-shadow: 5px 5px 2px green;
+}
