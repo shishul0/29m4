@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.core.handlers.wsgi import WSGIRequest
 from django.urls import reverse
+from .forms import ExtendedUserCreationForm
 
 def my_login(request: WSGIRequest):
     if request.method == 'GET':
@@ -20,4 +21,20 @@ def my_logout(request: WSGIRequest):
     return redirect(reverse("login"))
 
 def my_register(request: WSGIRequest):
-    return render(request, 'app_auth/register.html')
+    if request.method == "POST":
+        form = ExtendedUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user = authenticate(username=user.username, password=request.POST['password1'])
+            login(request, user=user)
+            return redirect(reverse('profile'))
+    else:
+      form = ExtendedUserCreationForm()
+
+    context = {
+        'form': form
+    }
+    return render(request, 'app_auth/register.html', context)
+
+def my_profile(request: WSGIRequest):
+    return render(request, 'app_auth/profile.html')
