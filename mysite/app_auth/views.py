@@ -1,0 +1,23 @@
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.core.handlers.wsgi import WSGIRequest
+from django.urls import reverse
+
+def my_login(request: WSGIRequest):
+    if request.method == 'GET':
+        return render(request, 'app_auth/login.html')
+    username = request.POST["username"]
+    password = request.POST["password"]
+    user = authenticate(request, username=username, password=password)
+    if user is None:
+        return render(request, 'app_auth/login.html', {"error": "Пользователь не найден"})
+    
+    login(request, user)
+    return redirect(reverse("main-page"))
+
+def my_logout(request: WSGIRequest):
+    logout(request)
+    return redirect(reverse("login"))
+
+def my_register(request: WSGIRequest):
+    return render(request, 'app_auth/register.html')

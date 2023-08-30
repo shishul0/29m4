@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ adv.title }}
+{% endblock %}
+
+{% block content %}
+  <div class="container" style="margin: 50px;">
+    <div class="display-2">
+      <span class="badge bg-primary">Объявление пользователя {{ adv.user }}</span>
+    </div>
+  </div>
+  <div class="col offset-2">
+    <div class="card mb-2" style="max-width: 1200px; margin-top: 20px;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <a href="#" class="nav-link">
+            <img src="{% if adv.image %}{{ adv.image.url }}{% endif %}" class="img-fluid rounded-start" alt="Card title">
+          </a>
+        </div>
+        <div class="col">
+          <div class="card-body">
+            <h5 class="card-title">
+              <a href="#" class="nav-link"><strong>"{{ adv.title }}" по цене {{ adv.price }}руб.</strong></a>
+            </h5>
+            <p class="card-text">
+              {{ adv.description }}
+            </p>
+            <span>Автор: {{ adv.user }}</span>
+            <p class="card-text"><small class="text-muted">{{ adv.created_at }}</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Создать объявление
+{% endblock %}
+
+{% block header %}
+<ul class="nav nav-pills sticky-top bg-white nav-fill">
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'main-page' %}">
+      <span style="font-weight: bold;">Главная</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'sellers' %}"><span style="font-weight: bold;">Топ продавцов</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="{% url 'advert_post' %}">
+      <span style="font-weight: bold;">Разместить объявление</span>
+    </a>
+  </li>
+  {% if user.is_authenticated %}
+  <li class="nav-item">
+    <a class="nav-link" href="profile.html">
+      <span style="font-weight: bold;">Профиль</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'logout' %}">
+      <span style="font-weight: bold;">Выйти</span>
+    </a>
+  </li>
+  {% else %}
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'register' %}">
+      <span style="font-weight: bold;">Регистрация</span>
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'login' %}">
+      <span style="font-weight: bold;">Войти</span>
+    </a>
+  </li> 
+  {% endif %}
+</ul>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col" style="margin: 50px;">
+    <div class="display-2">
+      <span class="badge bg-primary">Сообщите миру об этом в этой форме</span>
+    </div>
+  </div>
+</div>
+<div class="container">
+
+  <!--форма-->
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} <!--отправляю токен-->
+    <!--см пояснение в тет-->
+    <div class="row mb-3 offset-sm-4"> <!--при маленьком экране форма будет сдвигаться-->
+      <div class="col-6"> <!--col-6 - половина экрана-->
+        {{form.as_p}} <!--указываю форму-->
+        <!-- .as_p - обернуть в теги p .as_table - хз .as_ul - как список-->
+      </div>
+    </div>
+    <div class="row mb-3 offset-sm-5">
+      <div class="col">
+        <button type="submit" class="btn btn-success">Принять</button>
+      </div>
+    </div>
+  </form>
+  <!--/форма-->
+  
+</div>
+{% endblock %}      
